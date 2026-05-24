@@ -23,6 +23,6 @@ export interface FindClientFacadeOutputDto {
 }
 
 export default interface ClientAdmFacadeInterface {
-  add(input: AddClientFacadeInputDto): Promise<void>;
+  add(input: AddClientFacadeInputDto): Promise<any>;
   find(input: FindClientFacadeInputDto): Promise<FindClientFacadeOutputDto>;
 }
