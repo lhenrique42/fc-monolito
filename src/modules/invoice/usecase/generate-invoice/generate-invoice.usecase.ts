@@ -1,5 +1,7 @@
 import Invoice from "../../domain/invoice.entity";
+import InvoiceItem from "../../domain/InvoiceItem.entity";
 import InvoiceGateway from "../../gateway/invoice.gateway";
+import Id from "../../../@shared/domain/value-object/id.value-object";
 import {
     GenerateInvoiceInputDto,
     GenerateInvoiceOutputDto,
@@ -19,7 +21,11 @@ export default class GenerateInvoiceUseCase {
             name: input.name,
             document: input.document,
             address: input.address,
-            items: input.items,
+            items: input.items.map((item) => new InvoiceItem({
+                id: item.id ? new Id(item.id) : new Id(),
+                name: item.name,
+                price: item.price,
+            })),
         };
 
         const invoice = new Invoice(props);
@@ -30,7 +36,11 @@ export default class GenerateInvoiceUseCase {
             name: persistedInvoice.name,
             document: persistedInvoice.document,
             address: persistedInvoice.address,
-            items: persistedInvoice.items,
+            items: persistedInvoice.items.map((item) => ({
+                id: item.id.id,
+                name: item.name,
+                price: item.price,
+            })),
             createdAt: persistedInvoice.createdAt,
             updatedAt: persistedInvoice.updatedAt,
         };

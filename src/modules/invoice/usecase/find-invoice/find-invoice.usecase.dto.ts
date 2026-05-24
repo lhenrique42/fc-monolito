@@ -1,5 +1,4 @@
 import Address from "../../../@shared/domain/value-object/address";
-import InvoiceItem from "../../domain/InvoiceItem.entity";
 
 export interface FindInvoiceInputDto {
     id: string;
@@ -10,7 +9,11 @@ export interface FindInvoiceOutputDto {
     name: string;
     document: string;
     address: Address;
-    items: InvoiceItem[];
+    items: {
+        id: string;
+        name: string;
+        price: number;
+    }[];
     createdAt: Date;
     updatedAt: Date;
 }

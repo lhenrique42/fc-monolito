@@ -45,6 +45,7 @@ export default class InvoiceRepository implements InvoiceGateway {
         }
 
         const invoice = new Invoice({
+            id: new Id(invoiceModel.id),
             name: invoiceModel.name,
             document: invoiceModel.document,
             address: {
@@ -62,6 +63,8 @@ export default class InvoiceRepository implements InvoiceGateway {
                     price: item.price,
                 });
             }),
+            createdAt: invoiceModel.createdAt,
+            updatedAt: invoiceModel.updatedAt,
         });
 
         return invoice;

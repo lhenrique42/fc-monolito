@@ -50,7 +50,10 @@ describe("FindInvoiceUseCase", () => {
         expect(result.name).toBe(invoice.name);
         expect(result.document).toBe(invoice.document);
         expect(result.address).toEqual(invoice.address);
-        expect(result.items).toEqual(invoice.items);
+        expect(result.items.length).toBe(1);
+        expect(result.items[0].id).toBe(invoice.items[0].id.id);
+        expect(result.items[0].name).toBe(invoice.items[0].name);
+        expect(result.items[0].price).toBe(invoice.items[0].price);
         expect(result.createdAt).toEqual(invoice.createdAt);
         expect(result.updatedAt).toEqual(invoice.updatedAt);
     });

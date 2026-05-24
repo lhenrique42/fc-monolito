@@ -19,7 +19,11 @@ export default class FindInvoiceUseCase {
             name: result.name,
             document: result.document,
             address: result.address,
-            items: result.items,
+            items: result.items.map((item) => ({
+                id: item.id.id,
+                name: item.name,
+                price: item.price,
+            })),
             createdAt: result.createdAt,
             updatedAt: result.updatedAt,
         };

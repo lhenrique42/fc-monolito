@@ -1,11 +1,14 @@
 import Address from "../../../@shared/domain/value-object/address";
-import InvoiceItem from "../../domain/InvoiceItem.entity";
 
 export interface GenerateInvoiceInputDto {
     name: string;
     document: string;
     address: Address;
-    items: InvoiceItem[];
+    items: {
+        id?: string;
+        name: string;
+        price: number;
+    }[];
 }
 
 export interface GenerateInvoiceOutputDto {
@@ -13,7 +16,11 @@ export interface GenerateInvoiceOutputDto {
     name: string;
     document: string;
     address: Address;
-    items: InvoiceItem[];
+    items: {
+        id: string;
+        name: string;
+        price: number;
+    }[];
     createdAt: Date;
     updatedAt: Date;
 }

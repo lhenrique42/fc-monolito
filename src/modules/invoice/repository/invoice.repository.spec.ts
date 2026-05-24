@@ -68,11 +68,14 @@ describe("InvoiceRepository test", () => {
 
         const result = await repository.find(invoice.id.id);
 
-        expect(result.id).toBeDefined();
+        expect(result.id.id).toBe(invoice.id.id);
         expect(result.name).toBe(invoice.name);
         expect(result.document).toBe(invoice.document);
         expect(result.address).toEqual(invoice.address);
+        expect(result.items.at(0).id.id).toEqual(invoice.items.at(0).id.id);
         expect(result.items.at(0).name).toEqual(invoice.items.at(0).name);
         expect(result.items.at(0).price).toEqual(invoice.items.at(0).price);
+        expect(result.createdAt).toEqual(invoice.createdAt);
+        expect(result.updatedAt).toEqual(invoice.updatedAt);
     });
 });
