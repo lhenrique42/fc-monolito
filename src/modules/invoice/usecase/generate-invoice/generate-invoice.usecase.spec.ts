@@ -54,7 +54,7 @@ describe("GenerateInvoiceUseCase", () => {
                 {
                     name: "Item 1",
                     price: 100,
-                } as InvoiceItem,
+                },
             ],
         };
 
